@@ -1,0 +1,5 @@
+vnginx/*
+!vnginx/nginx
+vnginx/nginx/*
+!vnginx/nginx/nginx.conf
+!vnginx/nginx/site-confs

@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  nginx:
+    restart: always
+    image: linuxserver/letsencrypt
+    volumes:
+      - ./vnginx:/config
+    ports:
+      - "188.68.62.150:80:80"
+      - "188.68.62.150:443:443"
+    environment:
+      - URL=portfolio-rebalancer.de
+      - EXTRA_DOMAINS=portfolio-rebalancer.com
+    networks:
+      - jitcom_net
+
+networks:
+  jitcom_net:
+    external: true
