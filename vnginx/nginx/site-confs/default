@@ -5,8 +5,10 @@ server {
     include /config/nginx/ssl.conf;
     server_name portfolio-rebalancer.com portfolio-rebalancer.de;
 
+
     location / {
-        proxy_pass http://vite_server:8080;
+        set $endpoint http://vite_server:8080;
+        proxy_pass $endpoint$request_uri;
     }
 
     location /asset_api {
@@ -29,7 +31,7 @@ server {
     server_name suggest-app.com;
 
     location / {
-        proxy_pass http://sg-frontend:8080;
+        proxy_pass http://sg-frontend:80;
     }
 
     location /signin {
