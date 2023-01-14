@@ -5,20 +5,24 @@ server {
     include /config/nginx/ssl.conf;
     server_name portfolio-rebalancer.com portfolio-rebalancer.de;
 
-
     location / {
         set $endpoint http://vite_server:8080;
         proxy_pass $endpoint$request_uri;
     }
 
     location /asset_api {
-        proxy_pass http://dbrunner:8080;
+        set $endpoint http://dbrunner:8080;
+        proxy_pass $endpoint$request_uri;
     }
+
     location /auth_api {
-        proxy_pass http://dbrunner:8080;
+        set $endpoint http://dbrunner:8080;
+        proxy_pass $endpoint$request_uri;
     }
+
     location /holding_api {
-        proxy_pass http://dbrunner:8080;
+        set $endpoint http://dbrunner:8080;
+        proxy_pass $endpoint$request_uri;
     }
 }
 
@@ -31,14 +35,18 @@ server {
     server_name suggest-app.com;
 
     location / {
-        proxy_pass http://sg-frontend:80;
+        set $endpoint http://sg-frontend:80;
+        proxy_pass $endpoint$request_uri;    
     }
 
     location /signin {
-        proxy_pass http://sg-backend:80;
+        set $endpoint http://sg-backend:80;
+        proxy_pass $endpoint$request_uri;
     }
+
     location /user {
-        proxy_pass http://sg-backend:80;
+        set $endpoint http://sg-backend:80;
+        proxy_pass $endpoint$request_uri;
     }
 }
 
