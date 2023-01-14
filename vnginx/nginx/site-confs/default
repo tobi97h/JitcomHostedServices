@@ -40,9 +40,13 @@ server {
     }
 
     location /signin {
-        set $endpoint http://sg-backend:80;
-        proxy_pass $endpoint$request_uri;
+        proxy_pass http://sg-backend:80;
     }
+
+     location /signin-spotify {
+        proxy_pass http://sg-backend:80; 
+    }
+
 
     location /user {
         set $endpoint http://sg-backend:80;
