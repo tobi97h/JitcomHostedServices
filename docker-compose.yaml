@@ -9,8 +9,8 @@ services:
       - "188.68.62.150:80:80"
       - "188.68.62.150:443:443"
     environment:
-      - URL=portfolio-rebalancer.de
-      - EXTRA_DOMAINS=portfolio-rebalancer.com,suggest-app.com
+      - URL=portfolio-rebalancer.com
+      - EXTRA_DOMAINS=portfolio-rebalancer.de,suggest-app.com
     networks:
       - jitcom_net
 
