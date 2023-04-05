@@ -1,3 +1,4 @@
+.idea
 vnginx/*
 !vnginx/nginx
 vnginx/nginx/*
