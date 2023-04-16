@@ -49,4 +49,9 @@ server {
         set $endpoint http://sg-backend:80;
         proxy_pass $endpoint$request_uri;
     }
+
+    location /admin {
+        set $endpoint http://sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
 }
