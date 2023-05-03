@@ -55,3 +55,33 @@ server {
         proxy_pass $endpoint$request_uri;
     }
 }
+
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    include /config/nginx/ssl.conf;
+    server_name dev.suggest-app.com;
+
+    location / {
+        set $endpoint http://dev-sg-frontend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+
+    # prefix match (signing-spotify will also get proxied)
+    location /signin {
+        set $endpoint http://dev-sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+
+    location /user {
+        set $endpoint http://dev-sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+
+    location /admin {
+        set $endpoint http://dev-sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+}
