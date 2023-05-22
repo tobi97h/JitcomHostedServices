@@ -84,4 +84,9 @@ server {
         set $endpoint http://dev-sg-backend:80;
         proxy_pass $endpoint$request_uri;
     }
+    
+    location /swagger {
+        set $endpoint http://dev-sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
 }
