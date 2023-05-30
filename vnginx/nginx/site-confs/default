@@ -50,6 +50,11 @@ server {
         proxy_pass $endpoint$request_uri;
     }
 
+    location /api {
+        set $endpoint http://sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+
     location /admin {
         set $endpoint http://sg-backend:80;
         proxy_pass $endpoint$request_uri;
@@ -71,6 +76,11 @@ server {
 
     # prefix match (signing-spotify will also get proxied)
     location /signin {
+        set $endpoint http://dev-sg-backend:80;
+        proxy_pass $endpoint$request_uri;
+    }
+
+    location /api {
         set $endpoint http://dev-sg-backend:80;
         proxy_pass $endpoint$request_uri;
     }
